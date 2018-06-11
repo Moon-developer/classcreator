@@ -1,8 +1,42 @@
 #!/bin/bash
-mkdir ~/.class1
-cp ./classfile ~/.class1/.
-cp ./classmaker ~/.class1/.
-echo -e "alias createclass='~/classcreator/./class1'" >> ~/.zshrc
-chmod +x ~/.class1/classmaker
-echo -e "run the following command:\n\tsource ~/.zshrc"
-echo -e "\nTo use the create class run the command:\n\tcreateclass <classname>"
+install() {
+	clear
+	echo "Are you sure you want install?"
+	select yn in "yes" "no"; do
+		case $yn in
+			yes )
+				mkdir ~/.class1
+				cp ./classfile ~/.class1/.
+				cp ./classmaker ~/.class1/.
+				echo -e "alias createclass='~/.class1/classmaker'" >> ~/.zshrc
+				chmod +x ~/.class1/classmaker
+				echo -e "run the following command:\n\tsource ~/.zshrc"
+				echo -e "\nTo use the create class run the command:\n\tcreateclass <classname>"
+				break;;
+			no ) 
+				echo "aborting...\n";;
+		esac
+		break;
+		echo "${WHITE}"
+	done
+}
+options() {
+	clear
+	echo "Install or Remove?"
+	select yn in "install" "remove"; do
+		case $yn in
+			install )
+				install
+				break;;
+			remove ) 
+				rm -rf ~/.class1
+				NUM=`cat ~/.zshrc | grep -n "alias createclass" | cut -d ":" -f1`
+				cat ~/.zshrc | sed "${NUM}d" > temp.txt
+				cat ./temp.txt > ~/.zshrc
+				rm ./temp.txt;;
+		esac
+		break;
+		echo "${WHITE}"
+	done
+}
+options
