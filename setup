@@ -1,8 +1,8 @@
 #!/bin/bash
-mkdir -p ~/classcreator
-cp classfile ~/classcreator/.
-cp classmaker ~/classcreator/.
+mkdir ~/.class1
+cp ./classfile ~/.class1/.
+cp ./classmaker ~/.class1/.
 echo -e "alias createclass='~/classcreator/./classmaker'" >> ~/.zshrc
-chmod +x ~/classcreator/classmaker
+chmod +x ~/.class1/classmaker
 echo -e "run the following command:\n\tsource ~/.zshrc"
 echo -e "\nTo use the create class run the command:\n\tcreateclass <classname>"
