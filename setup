@@ -7,7 +7,9 @@ install() {
 			yes )
 				if cat ~/.zshrc | grep "alias createclass"
 				then
-					echo "alias found"
+					awk '!a[$0]++' ~/.zshrc > temp.txt
+					cat ./temp.txt > ~/.zshrc
+					rm ./temp.txt
 				else
 					echo -e "alias createclass='~/.class1/classmaker'" >> ~/.zshrc
 				fi
@@ -35,9 +37,11 @@ options() {
 				break;;
 			remove ) 
 				rm -rf ~/.class1
+				awk '!a[$0]++' ~/.zshrc > temp.txt
+				cat ./temp.txt > ~/.zshrc
 				NUM=`cat ~/.zshrc | grep -n "alias createclass" | cut -d ":" -f1`
 				cat ~/.zshrc | sed "${NUM}d" > temp.txt
-				cat ./temp.txt >> ~/.zshrc
+				cat ./temp.txt > ~/.zshrc
 				rm ./temp.txt;;
 		esac
 		break;
