@@ -5,10 +5,15 @@ install() {
 	select yn in "yes" "no"; do
 		case $yn in
 			yes )
+				if cat ~/.zshrc | grep "alias createclass"
+				then
+					echo "alias found"
+				else
+					echo -e "alias createclass='~/.class1/classmaker'" >> ~/.zshrc
+				fi
 				mkdir -p ~/.class1
 				cp ./classfile ~/.class1/.
 				cp ./classmaker ~/.class1/.
-				echo -e "alias createclass='~/.class1/classmaker'" >> ~/.zshrc
 				chmod +x ~/.class1/classmaker
 				echo -e "run the following command:\n\tsource ~/.zshrc"
 				echo -e "\nTo use the create class run the command:\n\tcreateclass <classname>"
