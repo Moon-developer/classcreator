@@ -5,7 +5,7 @@ install() {
 	select yn in "yes" "no"; do
 		case $yn in
 			yes )
-				mkdir ~/.class1
+				mkdir -p ~/.class1
 				cp ./classfile ~/.class1/.
 				cp ./classmaker ~/.class1/.
 				echo -e "alias createclass='~/.class1/classmaker'" >> ~/.zshrc
@@ -32,7 +32,7 @@ options() {
 				rm -rf ~/.class1
 				NUM=`cat ~/.zshrc | grep -n "alias createclass" | cut -d ":" -f1`
 				cat ~/.zshrc | sed "${NUM}d" > temp.txt
-				cat ./temp.txt > ~/.zshrc
+				cat ./temp.txt >> ~/.zshrc
 				rm ./temp.txt;;
 		esac
 		break;
