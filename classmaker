@@ -13,8 +13,8 @@ do
 	CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
 	TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
 	echo -e "${BGreen}Creating ${CLASSNAME}  ${White}"
-	sed -n "2,29p" < ~/.class1/classfile | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed "s/{CLASS_NAME}/${CLASS_NAME}/g" | sed "s/{USERNAME}/${USER}/g" | sed "s/{TITLE}/${TITLE}/g" > ${TITLE}.hpp
-	sed -n "31,54p" < ~/.class1/classfile | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed "s/{CLASS_NAME}/${CLASS_NAME}/g" | sed "s/{USERNAME}/${USER}/g" | "sed s/{TITLE}/${TITLE}/g" > ${TITLE}.cpp
+	sed -n "2,29p" < ~/.class1/classfile | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
+	sed -n "31,54p" < ~/.class1/classfile | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
 	echo "$var"
 done
 ################################################################################
