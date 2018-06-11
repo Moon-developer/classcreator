@@ -1,0 +1,28 @@
+#ifndef		{CLASS_NAME}_HPP
+# define	{CLASS_NAME}_HPP
+
+class {TITLE} {
+	public:
+		{TITLE}();
+		{TITLE}({TITLE} const & src);
+		{TITLE} operator=({TITLE} const & src);
+		~{TITLE}();
+	private:
+
+	protected:
+
+};
+
+#endif
+//----------------------------------------------------------------------------//
+#include "{TITLE}.hpp"
+
+{TITLE}::{TITLE}() {}
+
+{TITLE}::{TITLE}({TITLE} const & src) {
+	*this = src;	
+}
+
+{TITLE}::~{TITLE}() {}
+
+{TITLE} {TITLE}::operator=({TITLE} const & src) {}
