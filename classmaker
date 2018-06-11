@@ -1,12 +1,14 @@
 #!/bin/bash
 ################################################################################
-CLASSNAME=$1
-TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
-CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
-TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
-echo -e "${BGreen}Creating ${CLASSNAME}  ${White}"
-
-sed -n "1,16p" < ~/.class1/classfile | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
-
-sed -n "18,28p" < ~/.class1/classfile | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
+for var in "$@"
+do
+	CLASSNAME=$var
+	TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
+	CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
+	TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+	echo -e "${BGreen}Creating ${CLASSNAME}  ${White}"
+	sed -n "1,16p" < ~/.class1/classfile | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
+	sed -n "18,28p" < ~/.class1/classfile | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
+	echo "$var"
+done
 ################################################################################

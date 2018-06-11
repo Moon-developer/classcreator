@@ -14,7 +14,7 @@ install() {
 				echo -e "\nTo use the create class run the command:\n\tcreateclass <classname>"
 				break;;
 			no ) 
-				echo "aborting...\n";;
+				echo -n "aborting...\n";;
 		esac
 		break;
 		echo "${WHITE}"
