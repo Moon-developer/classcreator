@@ -84,30 +84,38 @@ function cp() {
 ARGS=""
 while [ $# -gt 0 ]
 do
-    unset OPTIND
-    unset OPTARG
-	while getopts ":i:" opt; do
-	  case $opt in
-	   	i)
-		  parent="$OPTARG"
-		  TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
-		  TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
-		  PARENT=": public ${TEMP} "
-		  PARENTCPP=": ${TEMP} ()"
-		  PARENTINCLUDE="#include ${TEMP}.hpp"
-		  echo -e "Creating parent:\n\t ${TEMP}"
-		  cp ${TEMP}
-		  found=1
-	      ;;
-	    \?)
-	      echo "Invalid option: -$OPTARG" >&2
-	      exit 1
-	      ;;
-	    :)
-	      echo "Option -$OPTARG requires an argument." >&2
-	      exit 1
-	      ;;
-	  esac
+	unset OPTIND
+	unset OPTARG
+	while getopts ":i:p:" opt; do
+		case $opt in
+		i)
+		parent1="$OPTARG"
+		TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
+		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		PARENT=": public ${TEMP} "
+		PARENTCPP=": ${TEMP} ()"
+		PARENTINCLUDE="#include ${TEMP}.hpp"
+		echo -e "Creating parent:\n\t ${TEMP}"
+		cp ${TEMP}
+		;;
+	p)
+		parent2="$OPTARG"
+		TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
+		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		PARENT=": public ${TEMP} "
+		PARENTCPP=": ${TEMP} ()"
+		PARENTINCLUDE="#include ${TEMP}.hpp"
+		echo -e "Inheriting from existing parent class:\n\t ${TEMP}"
+		;;
+	\?)
+		echo "Invalid option: -$OPTARG" >&2
+		exit 1
+		;;
+	:)
+		echo "Option -$OPTARG requires an argument." >&2
+		exit 1
+		;;
+esac
 	done
 	shift $((OPTIND-1))
 	ARGS="${ARGS} $1 "

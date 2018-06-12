@@ -33,4 +33,11 @@ you can add a parent class with a flag that all other classes inherit from
 createclass -i test1 test2 test3
 ```
 will create test2 and test3 and a parent class test1 that they will inherit
-*note only use the flag -i once*
+#### note only use the flag -i once
+
+you can add an existing parent class using the -p flag
+```
+createclass -p test1 test2 test3
+```
+will create test2 and test3 that will inherit from exisiting test1
+#### note only use the flag -p once
