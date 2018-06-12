@@ -1,32 +1,118 @@
 #!/bin/bash
 ################################################################################
 
+function cc() {
+	for var in "$@"
+	do
+		TIME=`date "+%Y\/%m\/%d %H\/%M\/%S"`
+		CLASSNAMEN=$var
+		TEMPN="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAMEN:0})"
+		CLASS_NAMEN="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAMEN:0})"
+		TITLEF="$(tr '[:lower:]' '[:upper:]' <<< ${TEMPN:0:1})${TEMPN:1}"
+		SIZEN=`echo ${#TITLEF}`
+		NUMN=`expr 80 % ${SIZEN}`
+		NUMN=`expr ${NUMN} + 3`
+		SPACESN=`seq -f " " ${NUMN} | tr -d '\n'`
+		USER=`echo $USER`
+		SIZE=`echo ${#USER}`
+		NUM=`expr 80 % ${SIZE}`
+		SPACES=`seq -f " " ${NUM} | tr -d '\n'`
+		CLASSNAME=$var
+		TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
+		CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
+		TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		sed -n "2,29p" < ~/.class1/classfile | \
+			sed "s/{TIME}/${TIME}/g" | \
+			sed "s/{PARENT}/${PARENT}/g" | \
+			sed "s/{PARENTINCLUDE}/${PARENTINCLUDE}/g" | \
+			sed "s/{TITLEF}.hpp/${TITLEF}.hpp${SPACESN}/g" | \
+			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
+			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
+			sed s/{USERNAME}/${USER}/g | \
+			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
+		sed -n "31,54p" < ~/.class1/classfile | \
+			sed "s/{TIME}/${TIME}/g" | \
+			sed "s/{PARENTCPP}/${PARENTCPP}/g" | \
+			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
+			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
+			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
+			sed s/{USERNAME}/${USER}/g | \
+			sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
+	done
+}
 
-for var in "$@"
+function cp() {
+	for var in "$@"
+	do
+		TIME=`date "+%Y\/%m\/%d %H\/%M\/%S"`
+		CLASSNAMEN=$var
+		TEMPN="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAMEN:0})"
+		CLASS_NAMEN="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAMEN:0})"
+		TITLEF="$(tr '[:lower:]' '[:upper:]' <<< ${TEMPN:0:1})${TEMPN:1}"
+		SIZEN=`echo ${#TITLEF}`
+		NUMN=`expr 80 % ${SIZEN}`
+		NUMN=`expr ${NUMN} + 3`
+		SPACESN=`seq -f " " ${NUMN} | tr -d '\n'`
+		USER=`echo $USER`
+		SIZE=`echo ${#USER}`
+		NUM=`expr 80 % ${SIZE}`
+		SPACES=`seq -f " " ${NUM} | tr -d '\n'`
+		CLASSNAME=$var
+		TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
+		CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
+		TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		sed -n "2,31p" < ~/.class1/classfile | \
+			sed "s/{TIME}/${TIME}/g" | \
+			sed "s/{PARENT}//g" | \
+			sed "s/{PARENTINCLUDE}//g" | \
+			sed "s/{TITLEF}.hpp/${TITLEF}.hpp${SPACESN}/g" | \
+			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
+			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
+			sed s/{USERNAME}/${USER}/g | \
+			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
+		sed -n "33,56p" < ~/.class1/classfile | \
+			sed "s/{TIME}/${TIME}/g" | \
+			sed "s/{PARENTCPP}//g" | \
+			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
+			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
+			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
+			sed s/{USERNAME}/${USER}/g | \
+			sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
+	done
+}
+
+ARGS=""
+while [ $# -gt 0 ]
 do
-
-	TIME=`date "+%Y\/%m\/%d %H\/%M\/%S"`
-
-	CLASSNAMEN=$var
-	TEMPN="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAMEN:0})"
-	CLASS_NAMEN="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAMEN:0})"
-	TITLEF="$(tr '[:lower:]' '[:upper:]' <<< ${TEMPN:0:1})${TEMPN:1}"
-	SIZEN=`echo ${#TITLEF}`
-	NUMN=`expr 80 % ${SIZEN}`
-	NUMN=`expr ${NUMN} + 3`
-	SPACESN=`seq -f " " ${NUMN} | tr -d '\n'`
-
-	USER=`echo $USER`
-	SIZE=`echo ${#USER}`
-	NUM=`expr 80 % ${SIZE}`
-	SPACES=`seq -f " " ${NUM} | tr -d '\n'`
-	CLASSNAME=$var
-	TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
-	CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
-	TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
-	echo -e "${BGreen}Creating ${CLASSNAME}  ${White}"
-	sed -n "2,29p" < ~/.class1/classfile | sed "s/{TIME}/${TIME}/g" | sed "s/{TITLEF}.hpp/${TITLEF}.hpp${SPACESN}/g" | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
-	sed -n "31,54p" < ~/.class1/classfile | sed "s/{TIME}/${TIME}/g" | sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | sed "s/{USERNAME}/${USER}${SPACES}/g" | sed s/{CLASS_NAME}/${CLASS_NAME}/g | sed s/{USERNAME}/${USER}/g | sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
-	echo "$var"
+    unset OPTIND
+    unset OPTARG
+	while getopts ":i:" opt; do
+	  case $opt in
+	   	i)
+		  parent="$OPTARG"
+		  TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
+		  TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		  PARENT=": public ${TEMP} "
+		  PARENTCPP=": ${TEMP} ()"
+		  PARENTINCLUDE="#include ${TEMP}.hpp"
+		  echo -e "Creating parent:\n\t ${TEMP}"
+		  cp ${TEMP}
+		  found=1
+	      ;;
+	    \?)
+	      echo "Invalid option: -$OPTARG" >&2
+	      exit 1
+	      ;;
+	    :)
+	      echo "Option -$OPTARG requires an argument." >&2
+	      exit 1
+	      ;;
+	  esac
+	done
+	shift $((OPTIND-1))
+	ARGS="${ARGS} $1 "
+	shift
 done
+echo -e "creating the classes files:\n $ARGS"
+cc $ARGS
 ################################################################################

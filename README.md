@@ -27,3 +27,9 @@ createclass test1 test2 test3
 ls *
 Test1.cpp Test1.hpp Test2.cpp Test2.hpp Test3.cpp Test3.hpp 
 ```
+
+you can add a parent class with a flag that all other classes inherit from
+```
+createclass -i test1 test2 test3
+```
+will create test2 and test3 and a parent class test1 that they will inherit

@@ -14,7 +14,9 @@
 #ifndef		{CLASS_NAME}_HPP
 # define	{CLASS_NAME}_HPP
 
-class {TITLE} {
+{PARENTINCLUDE}
+
+class {TITLE} {PARENT}{
 	public:
 		{TITLE}();
 		{TITLE}({TITLE} const & src);
@@ -42,9 +44,9 @@ class {TITLE} {
 
 #include "{TITLE}.hpp"
 
-{TITLE}::{TITLE}() {}
+{TITLE}::{TITLE}() {PARENTCPP}{}
 
-{TITLE}::{TITLE}({TITLE} const & src) {
+{TITLE}::{TITLE}({TITLE} const & src) {PARENTCPP}{
 	*this = src;	
 }
 
