@@ -1,4 +1,4 @@
-# C++ class creator command
+# C++ class creator command \(WeThinkCode\_\)
 
 create skeleton c++ files in current director in coplien/canonical standard
 with the 42 header
