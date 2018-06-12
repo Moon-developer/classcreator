@@ -1,6 +1,7 @@
 # C++ class creator command
 
 create skeleton c++ files in current director in coplien/canonical standard
+with the 42 header file
 
 #### note: this is for zsh shell
 
