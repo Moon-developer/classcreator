@@ -1,6 +1,17 @@
 #!/bin/bash
-################################################################################
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    classmaker                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/06/12 11:10:34 by mafernan          #+#    #+#              #
+#    Updated: 2018/06/12 11:10:34 by mafernan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+# create class function
 function cc() {
 	for var in "$@"
 	do
@@ -41,6 +52,7 @@ function cc() {
 	done
 }
 
+# create parent class function
 function cp() {
 	for var in "$@"
 	do
@@ -81,6 +93,7 @@ function cp() {
 	done
 }
 
+# look for flags
 ARGS=""
 while [ $# -gt 0 ]
 do
