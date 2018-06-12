@@ -32,7 +32,7 @@ function cc() {
 		TEMP="$(tr '[:upper:]' '[:lower:]' <<< ${CLASSNAME:0})"
 		CLASS_NAME="$(tr '[:lower:]' '[:upper:]' <<< ${CLASSNAME:0})"
 		TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
-		sed -n "2,29p" < ~/.class1/classfile | \
+		sed -n "2,31p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
 			sed "s/{PARENT}/${PARENT}/g" | \
 			sed "s/{PARENTINCLUDE}/${PARENTINCLUDE}/g" | \
@@ -41,7 +41,7 @@ function cc() {
 			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
 			sed s/{USERNAME}/${USER}/g | \
 			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
-		sed -n "31,54p" < ~/.class1/classfile | \
+		sed -n "33,56p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
 			sed "s/{PARENTCPP}/${PARENTCPP}/g" | \
 			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
