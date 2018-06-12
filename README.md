@@ -1,5 +1,8 @@
 # classcreator
 
+create skeleton c++ files in coplien/canonical standard
+### note: this is for zsh shell
+
 ## SETUP
 
 to setup run the following commands
@@ -38,4 +41,4 @@ you can add an existing parent class using the -p flag that will will create Chi
 ```
 createclass -p Parent Child1 Child2
 ```
-#### note only use the one flag at a time
+#### note: only use the one flag at a time
