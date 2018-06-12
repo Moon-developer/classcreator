@@ -33,10 +33,9 @@ This will create Child1,Child2 and a new Parent class that the child will inheri
 ```
 createclass -i NewParent Child1 Child2
 ```
-#### note only use the flag -i once
 
 you can add an existing parent class using the -p flag that will will create Child1 and Child2 which will inherit from exisiting Parent.
 ```
 createclass -p Parent Child1 Child2
 ```
-#### note only use the flag -p once
+#### note only use the one flag at a time
