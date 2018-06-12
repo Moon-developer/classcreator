@@ -93,6 +93,12 @@ function cp() {
 	done
 }
 
+# check for arguments
+if [[ $# -eq 0 ]] ; then
+	echo "No arguments given. Read the README.md file for how to options."
+    exit 1
+fi
+
 # look for flags
 ARGS=""
 while [ $# -gt 0 ]
