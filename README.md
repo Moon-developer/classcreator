@@ -1,7 +1,7 @@
 # classcreator
 
 create skeleton c++ files in coplien/canonical standard
-##### note: this is for zsh shell
+#### note: this is for zsh shell
 
 ## SETUP
 
