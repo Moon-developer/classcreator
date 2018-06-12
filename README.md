@@ -1,10 +1,12 @@
-# classcreator
+# C++ class creator command
 
-create skeleton c++ files in coplien/canonical standard
+create skeleton c++ files in current director in coplien/canonical standard
+
 #### note: this is for zsh shell
 
 ## SETUP
 
+setup up script allows cmd to be run from anywhere
 to setup run the following commands
 
 ```
