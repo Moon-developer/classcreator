@@ -18,8 +18,8 @@ class {TITLE} {
 	public:
 		{TITLE}();
 		{TITLE}({TITLE} const & src);
-		{TITLE} operator=({TITLE} const & src);
 		~{TITLE}();
+		{TITLE} & operator=({TITLE} const & src);
 	private:
 
 	protected:
@@ -50,5 +50,5 @@ class {TITLE} {
 
 {TITLE}::~{TITLE}() {}
 
-{TITLE} {TITLE}::operator=({TITLE} const & src) {}
+{TITLE} & {TITLE}::operator=({TITLE} const & src) {}
 
