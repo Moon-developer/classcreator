@@ -28,16 +28,15 @@ ls *
 Test1.cpp Test1.hpp Test2.cpp Test2.hpp Test3.cpp Test3.hpp 
 ```
 
-you can add a parent class with a flag that all other classes inherit from
+you can creat a new Parent class that all child classes will inherit from.
+This will create Child1,Child2 and a new Parent class that the child will inherit from.
 ```
-createclass -i test1 test2 test3
+createclass -i NewParent Child1 Child2
 ```
-will create test2 and test3 and a parent class test1 that they will inherit
 #### note only use the flag -i once
 
-you can add an existing parent class using the -p flag
+you can add an existing parent class using the -p flag that will will create Child1 and Child2 which will inherit from exisiting Parent.
 ```
-createclass -p test1 test2 test3
+createclass -p Parent Child1 Child2
 ```
-will create test2 and test3 that will inherit from exisiting test1
 #### note only use the flag -p once
