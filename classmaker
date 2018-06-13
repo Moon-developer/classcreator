@@ -41,7 +41,7 @@ function cc() {
 			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
 			sed s/{USERNAME}/${USER}/g | \
 			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
-		sed -n "33,56p" < ~/.class1/classfile | \
+		sed -n "33,58p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
 			sed "s/{PARENTCPP}/${PARENTCPP}/g" | \
 			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
@@ -82,7 +82,7 @@ function cp() {
 			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
 			sed s/{USERNAME}/${USER}/g | \
 			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
-		sed -n "33,56p" < ~/.class1/classfile | \
+		sed -n "33,58p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
 			sed "s/{PARENTCPP}//g" | \
 			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \

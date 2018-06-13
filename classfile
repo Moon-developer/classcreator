@@ -52,5 +52,7 @@ class {TITLE} {PARENT}{
 
 {TITLE}::~{TITLE}() {}
 
-{TITLE} & {TITLE}::operator=({TITLE} const & src) {}
+{TITLE} & {TITLE}::operator=({TITLE} const & src) {
+	return (*this)
+}
 
