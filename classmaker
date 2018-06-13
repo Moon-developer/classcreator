@@ -113,7 +113,7 @@ do
 		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
 		PARENT=": public ${TEMP} "
 		PARENTCPP=": ${TEMP} ()"
-		PARENTINCLUDE="#include ${TEMP}.hpp"
+		PARENTINCLUDE="#include \"${TEMP}.hpp\""
 		echo -e "Creating parent:\n\t ${TEMP}"
 		cp ${TEMP}
 		;;
@@ -123,7 +123,7 @@ do
 		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
 		PARENT=": public ${TEMP} "
 		PARENTCPP=": ${TEMP} ()"
-		PARENTINCLUDE="#include ${TEMP}.hpp"
+		PARENTINCLUDE="#include \"${TEMP}.hpp\""
 		echo -e "Inheriting from existing parent class:\n\t ${TEMP}"
 		;;
 	\?)
