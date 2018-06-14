@@ -53,6 +53,10 @@ class {TITLE} {PARENT}{
 {TITLE}::~{TITLE}() {}
 
 {TITLE} & {TITLE}::operator=({TITLE} const & src) {
-	return (*this)
+	if (this != &src)
+    {
+        *this = src;
+    }
+	return (*this);
 }
 
