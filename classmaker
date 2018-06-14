@@ -11,6 +11,9 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+EXTRA=`echo -e "\t*this = src;"`
+
 # create class function
 function cc() {
 	for var in "$@"
@@ -43,6 +46,7 @@ function cc() {
 			sed s/{TITLE}/${TITLE}/g > ${TITLE}.hpp
 		sed -n "33,62p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
+			sed "s/{EXTRA}/${EXTRA}/g" | \
 			sed "s/{PARENTCPP}/${PARENTCPP}/g" | \
 			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
 			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
@@ -51,6 +55,7 @@ function cc() {
 			sed s/{TITLE}/${TITLE}/g > ${TITLE}.cpp
 	done
 }
+
 
 # create parent class function
 function cp() {
@@ -85,6 +90,7 @@ function cp() {
 		sed -n "33,62p" < ~/.class1/classfile | \
 			sed "s/{TIME}/${TIME}/g" | \
 			sed "s/{PARENTCPP}//g" | \
+			sed "s/{EXTRA}/*this = src;/g" | \
 			sed "s/{TITLEF}.cpp/${TITLEF}.cpp${SPACESN}/g" | \
 			sed "s/{USERNAME}/${USER}${SPACES}/g" | \
 			sed s/{CLASS_NAME}/${CLASS_NAME}/g | \
@@ -111,8 +117,9 @@ do
 		parent1="$OPTARG"
 		TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
 		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		EXTRA=`echo -e "\tBase::operator=(src);\\\\\\\\\n" "${EXTRA}"`
 		PARENT=": public ${TEMP} "
-		PARENTCPP=": ${TEMP} ()"
+		PARENTCPP=": ${TEMP} (src)"
 		PARENTINCLUDE="#include \"${TEMP}.hpp\""
 		echo -e "Creating parent:\n\t ${TEMP}"
 		cp ${TEMP}
@@ -121,6 +128,7 @@ do
 		parent2="$OPTARG"
 		TEMP=`echo $OPTARG | tr '[:upper:]' '[:lower:]'`
 		TEMP="$(tr '[:lower:]' '[:upper:]' <<< ${TEMP:0:1})${TEMP:1}"
+		EXTRA=`echo -e "\tBase::operator=(src);\\\\\\\\\n" "${EXTRA}"`
 		PARENT=": public ${TEMP} "
 		PARENTCPP=": ${TEMP} ()"
 		PARENTINCLUDE="#include \"${TEMP}.hpp\""
